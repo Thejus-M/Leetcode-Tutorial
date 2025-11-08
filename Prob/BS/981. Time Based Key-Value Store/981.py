@@ -12,16 +12,16 @@ class TimeMap:
         res=""
         arr=self.s.get(key,[])
 
-        l,r=0,len(arr)-1
-        while l<=r:
-            m=(l+r)//2
+        left,right=0,len(arr)-1
+        while left<=right:
+            m=(left+right)//2
             if arr[m][1]==timestamp:
                 return arr[m][0]
             elif arr[m][1]<timestamp:
                 res=arr[m][0]
-                l=m+1
+                left=m+1
             else:
-                r=m-1
+                right=m-1
         return res
 
         

@@ -1,32 +1,10 @@
 from typing import Optional
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-    @staticmethod
-    def from_list(lst):
-        if not lst:
-            return None
-        head = ListNode(lst[0])
-        current = head
-        for value in lst[1:]:
-            current.next = ListNode(value)
-            current = current.next
-        return head
-
-    def to_list(self):
-        lst = []
-        current = self
-        while current:
-            lst.append(current.val)
-            current = current.next
-        return lst
+from my_utils import ListNode, create_linked_list
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head: return head
+        if not head:
+            return head
         prev,curr=head,head.next
         while curr:
             nxt=curr.next
@@ -44,10 +22,14 @@ def main():
     ]
 
     for lst, expected in inputs:
-        head = ListNode.from_list(lst)
+        head = create_linked_list(lst)
         obj = Solution()
         reversed_head = obj.reverseList(head)
-        result = reversed_head.to_list() if reversed_head else []
+        result = []
+        current = reversed_head
+        while current:
+            result.append(current.val)
+            current = current.next
         
         status = "✅ Correct" if result == expected else "❌ Incorrect"
         print(f"Input: {lst}\nExpected: {expected}\nResult: {result}\nStatus: {status}\n")
