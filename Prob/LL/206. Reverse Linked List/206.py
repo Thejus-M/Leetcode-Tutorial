@@ -6,6 +6,7 @@ class Solution:
         if not head:
             return head
         prev,curr=head,head.next
+        head.next = None  # Break the link from the original head
         while curr:
             nxt=curr.next
             curr.next=prev
