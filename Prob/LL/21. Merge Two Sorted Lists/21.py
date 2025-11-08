@@ -18,7 +18,7 @@ class Solution:
                 list2=list2.next
             head=head.next
         if list1 or list2:
-            head.next=list1 if list1 else list2
+            head.next=list1 or list2
         return res.next
 
 def main():
